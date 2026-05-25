@@ -1,0 +1,20 @@
+:root {
+  --bg: #ececec;
+  --panel: #f0f0f0;
+  --paper: #fbfbf7;
+  --ink: #111111;
+  --muted: #707070;
+  --line: #171717;
+  --shadow: rgba(17, 17, 17, 0.16);
+
+  --slap: #6aa9ff;
+  --slap-soft: rgba(106, 169, 255, 0.18);
+  --bass: #d9a441;
+  --bass-soft: rgba(217, 164, 65, 0.2);
+
+  --perfect: #5ae6b8;
+  --great: #8dd8ff;
+  --good: #ffd166;
+  --bad: #ff9f6e;
+  --miss: #b0b0b0;
+}

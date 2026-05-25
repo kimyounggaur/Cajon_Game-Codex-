@@ -1,0 +1,17 @@
+{
+  "name": "Cajon Rhythm",
+  "short_name": "Cajon",
+  "description": "Mobile-first cajon rhythm game",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ECECEC",
+  "theme_color": "#F0F0F0",
+  "icons": [
+    {
+      "src": "/assets/cajon-icon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
