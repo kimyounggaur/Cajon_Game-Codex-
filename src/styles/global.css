@@ -428,7 +428,7 @@ button:disabled {
 }
 
 .touch-pad.bass {
-  width: clamp(82px, 24vw, 118px);
+  width: min(34%, 106px);
   aspect-ratio: 1;
   border-color: #6d4b00;
   background: var(--bass-soft);

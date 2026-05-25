@@ -15,8 +15,8 @@ export interface LaneMeta {
 export const LANE_META: Record<LaneId, LaneMeta> = {
   SLAP_L: { label: 'Slap L', sound: 'slap', x: 18, y: 13, pan: -0.35 },
   SLAP_R: { label: 'Slap R', sound: 'slap', x: 82, y: 13, pan: 0.35 },
-  BASS_L: { label: 'Bass L', sound: 'bass', x: 43, y: 53, pan: -0.15 },
-  BASS_R: { label: 'Bass R', sound: 'bass', x: 57, y: 53, pan: 0.15 }
+  BASS_L: { label: 'Bass L', sound: 'bass', x: 29, y: 53, pan: -0.15 },
+  BASS_R: { label: 'Bass R', sound: 'bass', x: 71, y: 53, pan: 0.15 }
 };
 
 export const LANE_IDS = Object.keys(LANE_META) as LaneId[];
