@@ -1,13 +1,14 @@
 const CACHE_NAME = 'cajon-rhythm-v1';
+const asset = (path) => new URL(path, self.registration.scope).toString();
 const ASSETS = [
-  '/',
-  '/manifest.webmanifest',
-  '/assets/cajon-icon.png',
-  '/assets/hand-bass-full.png',
-  '/assets/hand-slap-upper.png',
-  '/assets/hand-tap-tip.png',
-  '/audio/slap.mp3',
-  '/audio/bass.mp3'
+  asset('./'),
+  asset('manifest.webmanifest'),
+  asset('assets/cajon-icon.png'),
+  asset('assets/hand-bass-full.png'),
+  asset('assets/hand-slap-upper.png'),
+  asset('assets/hand-tap-tip.png'),
+  asset('audio/slap.mp3'),
+  asset('audio/bass.mp3')
 ];
 
 self.addEventListener('install', (event) => {

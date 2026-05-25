@@ -8,7 +8,7 @@
   "theme_color": "#F0F0F0",
   "icons": [
     {
-      "src": "/assets/cajon-icon.png",
+      "src": "assets/cajon-icon.png",
       "sizes": "192x192 512x512",
       "type": "image/png",
       "purpose": "any maskable"
