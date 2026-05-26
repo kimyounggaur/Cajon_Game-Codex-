@@ -120,6 +120,31 @@ button:disabled {
   grid-column: 1 / -1;
 }
 
+.home-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-label,
+.chart-title {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+}
+
+.menu-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .chart-strip {
   display: grid;
   grid-template-columns: 1fr;
@@ -139,6 +164,16 @@ button:disabled {
 
 .chart-tile span {
   font-weight: 900;
+}
+
+.chart-tile .chart-title {
+  display: inline-flex;
+}
+
+.chart-title span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chart-tile small {
