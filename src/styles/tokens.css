@@ -17,4 +17,11 @@
   --good: #ffd166;
   --bad: #ff9f6e;
   --miss: #b0b0b0;
+
+  --diff-tutorial: #8dd8ff;
+  --diff-beginner: #8fe6a0;
+  --diff-easy: #ffd166;
+  --diff-normal: #ffb86b;
+  --diff-hard: #ff7a7a;
+  --diff-expert: #b88cff;
 }

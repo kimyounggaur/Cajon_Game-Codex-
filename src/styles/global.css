@@ -151,6 +151,29 @@ button:disabled {
   gap: 8px;
 }
 
+.home-recent-rhythm {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--slap-soft), var(--bass-soft)), var(--paper);
+}
+
+.home-recent-rhythm span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.home-recent-rhythm strong {
+  font-size: 0.95rem;
+}
+
+.home-recent-rhythm button {
+  width: 100%;
+}
+
 .chart-tile {
   min-height: 64px;
   padding: 10px;
@@ -569,6 +592,18 @@ button:disabled {
   font-size: 1.6rem;
   letter-spacing: 0;
   color: var(--bass);
+}
+
+.result-rhythm-title {
+  margin: 4px 0 8px;
+  font-weight: 1000;
+}
+
+.result-rhythm-title small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .result-grid {

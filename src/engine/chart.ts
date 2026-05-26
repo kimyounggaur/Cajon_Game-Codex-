@@ -2,23 +2,27 @@ export type LaneId = 'SLAP_L' | 'SLAP_R' | 'BASS_L' | 'BASS_R';
 
 export type HitType = 'slap' | 'bass';
 
-export type Difficulty = 'tutorial' | 'easy' | 'normal' | 'hard';
+export type Difficulty = 'tutorial' | 'beginner' | 'easy' | 'normal' | 'hard' | 'expert';
 
 export interface ChartNote {
   id: string;
   timeMs: number;
   lane: LaneId;
   type?: 'tap';
+  accent?: boolean;
+  ghost?: boolean;
 }
 
 export interface Chart {
   id: string;
+  rhythmId?: string;
   title: string;
   artist?: string;
   bpm: number;
   offsetMs: number;
   durationMs: number;
   difficulty: Difficulty;
+  timeSignature?: '4/4' | '3/4' | '6/8' | '12/8';
   notes: ChartNote[];
 }
 

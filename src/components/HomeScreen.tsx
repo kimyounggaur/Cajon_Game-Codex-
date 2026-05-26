@@ -1,15 +1,14 @@
 import { ASSETS } from '../assets/assets';
-import type { Chart } from '../engine/chart';
-import type { BestScore } from '../engine/storage';
+import type { RhythmBestRecord } from '../engine/progressStorage';
+import type { RhythmDefinition } from '../engine/rhythmTypes';
 
 interface HomeScreenProps {
-  charts: readonly Chart[];
-  selectedChartId: string;
-  bestScores: Record<string, BestScore>;
   fallbackActive: boolean;
-  onSelectChart: (chartId: string) => void;
+  recentRhythm?: RhythmDefinition;
+  recentRecord?: RhythmBestRecord;
+  onOpenRhythmSelect: () => void;
+  onContinueRhythm: () => void | Promise<void>;
   onStartInstrument: () => void | Promise<void>;
-  onStartGame: () => void | Promise<void>;
   onOpenSettings: () => void;
   onOpenTutorial: () => void;
 }
@@ -17,13 +16,12 @@ interface HomeScreenProps {
 type HomeIconName = 'play' | 'cajon' | 'book' | 'settings' | 'metronome' | 'bars' | 'wave' | 'bolt';
 
 export function HomeScreen({
-  charts,
-  selectedChartId,
-  bestScores,
   fallbackActive,
-  onSelectChart,
+  recentRhythm,
+  recentRecord,
+  onOpenRhythmSelect,
+  onContinueRhythm,
   onStartInstrument,
-  onStartGame,
   onOpenSettings,
   onOpenTutorial
 }: HomeScreenProps) {
@@ -39,10 +37,10 @@ export function HomeScreen({
       </div>
 
       <div className="home-actions" aria-label="main actions">
-        <button className="primary-action" type="button" onClick={onStartGame} aria-label="리듬 게임 시작">
+        <button className="primary-action" type="button" onClick={onOpenRhythmSelect} aria-label="리듬 선택">
           <span className="menu-label">
             <MenuIcon name="play" />
-            <span>리듬 게임 시작</span>
+            <span>리듬 선택</span>
           </span>
         </button>
         <button type="button" onClick={onStartInstrument} aria-label="연주 모드">
@@ -65,28 +63,17 @@ export function HomeScreen({
         </button>
       </div>
 
-      <div className="chart-strip" aria-label="chart selection">
-        {charts.map((chart) => {
-          const best = bestScores[chart.id];
-          return (
-            <button
-              key={chart.id}
-              className={chart.id === selectedChartId ? 'chart-tile selected' : 'chart-tile'}
-              type="button"
-              onClick={() => onSelectChart(chart.id)}
-              aria-pressed={chart.id === selectedChartId}
-            >
-              <span className="chart-title">
-                <MenuIcon name={getChartIconName(chart.difficulty)} />
-                <span>{chart.title}</span>
-              </span>
-              <small>
-                {chart.bpm} BPM · {best ? `${best.rank} ${Math.round(best.accuracy * 100)}%` : chart.difficulty}
-              </small>
-            </button>
-          );
-        })}
-      </div>
+      {recentRhythm && recentRecord ? (
+        <div className="home-recent-rhythm">
+          <span>최근 리듬</span>
+          <strong>
+            {recentRhythm.meta.title} · 정확도 {Math.round(recentRecord.bestAccuracy * 100)}% · {recentRecord.bestRank}
+          </strong>
+          <button type="button" onClick={onContinueRhythm}>
+            이어하기
+          </button>
+        </div>
+      ) : null}
 
       <div className="home-reference">
         <img src={ASSETS.cajonPhotoRef.src} alt={ASSETS.cajonPhotoRef.alt} />
@@ -97,13 +84,6 @@ export function HomeScreen({
       </p>
     </section>
   );
-}
-
-function getChartIconName(difficulty: Chart['difficulty']): HomeIconName {
-  if (difficulty === 'tutorial') return 'metronome';
-  if (difficulty === 'easy') return 'bars';
-  if (difficulty === 'normal') return 'wave';
-  return 'bolt';
 }
 
 function MenuIcon({ name }: { name: HomeIconName }) {

@@ -5,6 +5,7 @@ import { getLaneFromKeyboardEvent, shouldIgnoreKeyTarget } from '../engine/input
 import { createCounts, type Judgement } from '../engine/judge';
 import { RhythmEngine, type GameSnapshot } from '../engine/rhythmEngine';
 import { triggerHaptic } from '../engine/haptics';
+import type { RhythmDefinition } from '../engine/rhythmTypes';
 import type { BestScore, GameSettings } from '../engine/storage';
 import { CajonStage } from './CajonStage';
 import { HUD } from './HUD';
@@ -15,23 +16,33 @@ type PlayMode = 'instrument' | 'rhythm';
 interface GameScreenProps {
   mode: PlayMode;
   chart: Chart;
+  rhythm?: RhythmDefinition;
+  isPractice?: boolean;
   settings: GameSettings;
   audioEngine: AudioEngine;
   onBackHome: () => void;
   onOpenSettings: () => void;
   onResult: (score: BestScore) => void;
   onSwitchToInstrument: () => void | Promise<void>;
+  onRhythmDetail: () => void;
+  onRhythmSelect: () => void;
+  onPractice: () => void;
 }
 
 export function GameScreen({
   mode,
   chart,
+  rhythm,
+  isPractice = false,
   settings,
   audioEngine,
   onBackHome,
   onOpenSettings,
   onResult,
-  onSwitchToInstrument
+  onSwitchToInstrument,
+  onRhythmDetail,
+  onRhythmSelect,
+  onPractice
 }: GameScreenProps) {
   const engineRef = useRef(new RhythmEngine({ calibrationMs: settings.calibrationMs }));
   const resultReportedRef = useRef(false);
@@ -228,8 +239,13 @@ export function GameScreen({
       {mode === 'rhythm' && snapshot.mode === 'finished' ? (
         <ResultModal
           snapshot={snapshot}
+          rhythm={rhythm}
+          isPractice={isPractice}
           onRetry={restart}
           onHome={onBackHome}
+          onRhythmDetail={onRhythmDetail}
+          onRhythmSelect={onRhythmSelect}
+          onPractice={onPractice}
           onInstrument={() => {
             void onSwitchToInstrument();
           }}
