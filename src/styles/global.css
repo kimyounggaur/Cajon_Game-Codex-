@@ -64,9 +64,10 @@ button:disabled {
 }
 
 .eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 8px;
   color: var(--muted);
   font-size: 0.72rem;
+  line-height: 1.2;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -85,8 +86,8 @@ button:disabled {
 .home-brand {
   display: grid;
   grid-template-columns: 86px 1fr;
-  align-items: center;
-  gap: 14px;
+  align-items: start;
+  gap: 18px;
 }
 
 .home-logo {
@@ -98,14 +99,15 @@ button:disabled {
 .home-brand h1 {
   margin: 0;
   font-size: clamp(2rem, 11vw, 4.2rem);
-  line-height: 0.95;
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
 .home-subtitle {
-  margin: 6px 0 0;
+  margin: 10px 0 0;
   color: #333;
   font-weight: 700;
+  line-height: 1.35;
 }
 
 .home-actions {
