@@ -294,11 +294,12 @@ button:disabled {
   display: grid;
   place-items: center;
   perspective: 900px;
+  transform: translateY(18px);
 }
 
 .cajon-body {
   position: relative;
-  width: min(94vw, 430px, calc((100dvh - 126px) * 0.72));
+  width: min(98vw, 500px, calc((100dvh - 110px) * 0.82));
   aspect-ratio: 2481 / 3404;
   overflow: visible;
   filter: drop-shadow(0 22px 22px rgba(36, 24, 12, 0.2));
@@ -394,14 +395,14 @@ button:disabled {
 }
 
 .touch-pad.slap {
-  width: clamp(64px, 18vw, 92px);
+  width: clamp(78px, 21vw, 116px);
   aspect-ratio: 1;
   border-color: #245f9f;
   background: var(--slap-soft);
 }
 
 .touch-pad.bass {
-  width: min(34%, 106px);
+  width: min(40%, 132px);
   aspect-ratio: 1;
   border-color: #6d4b00;
   background: var(--bass-soft);
@@ -493,7 +494,7 @@ button:disabled {
   display: grid;
   place-items: center;
   background: rgba(240, 240, 240, 0.44);
-  font-size: clamp(4rem, 28vw, 9rem);
+  font-size: clamp(5rem, 34vw, 11rem);
   font-weight: 1000;
   text-shadow: 0 4px 0 rgba(17, 17, 17, 0.2);
 }
