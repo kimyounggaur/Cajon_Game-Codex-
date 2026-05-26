@@ -317,7 +317,7 @@ button:disabled {
   display: grid;
   place-items: center;
   perspective: 900px;
-  transform: translateY(18px);
+  transform: translateY(clamp(38px, 6dvh, 62px));
 }
 
 .cajon-body {
