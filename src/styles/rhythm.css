@@ -44,6 +44,10 @@
 
 .difficulty-tab,
 .style-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   min-height: 40px;
   padding: 0 12px;
   flex: 0 0 auto;
@@ -56,6 +60,16 @@
 .difficulty-tab span {
   color: var(--muted);
   font-size: 0.72rem;
+}
+
+.style-chip-count {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.style-chip.selected .style-chip-count {
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .difficulty-tab.selected.tutorial,

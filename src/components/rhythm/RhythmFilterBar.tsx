@@ -9,6 +9,7 @@ const STYLE_FILTERS: RhythmStyleFilter[] = ['all', 'basic', 'pop', 'rock', 'ball
 interface RhythmFilterBarProps {
   query: string;
   style: RhythmStyleFilter;
+  styleCounts: Record<RhythmStyleFilter, number>;
   sort: RhythmSort;
   onQueryChange: (query: string) => void;
   onStyleChange: (style: RhythmStyleFilter) => void;
@@ -18,6 +19,7 @@ interface RhythmFilterBarProps {
 export function RhythmFilterBar({
   query,
   style,
+  styleCounts,
   sort,
   onQueryChange,
   onStyleChange,
@@ -44,6 +46,7 @@ export function RhythmFilterBar({
             onClick={() => onStyleChange(item)}
           >
             {item === 'all' ? '전체' : RHYTHM_STYLE_LABELS[item]}
+            <span className="style-chip-count">{styleCounts[item] ?? 0}</span>
           </button>
         ))}
       </div>

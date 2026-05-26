@@ -30,6 +30,18 @@ export function RhythmSelectScreen({
   const [style, setStyle] = useState<RhythmStyleFilter>('all');
   const [sort, setSort] = useState<RhythmSort>('recommended');
 
+  const styleCounts = useMemo(() => {
+    const byDifficulty = rhythms.filter((rhythm) => selectedDifficulty === 'all' || rhythm.meta.difficulty === selectedDifficulty);
+    return byDifficulty.reduce<Record<RhythmStyleFilter, number>>(
+      (counts, rhythm) => {
+        counts.all += 1;
+        counts[rhythm.meta.style] = (counts[rhythm.meta.style] ?? 0) + 1;
+        return counts;
+      },
+      { all: 0 } as Record<RhythmStyleFilter, number>
+    );
+  }, [rhythms, selectedDifficulty]);
+
   const filtered = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     const byDifficulty = rhythms.filter((rhythm) => selectedDifficulty === 'all' || rhythm.meta.difficulty === selectedDifficulty);
@@ -61,6 +73,7 @@ export function RhythmSelectScreen({
       <RhythmFilterBar
         query={query}
         style={style}
+        styleCounts={styleCounts}
         sort={sort}
         onQueryChange={setQuery}
         onStyleChange={setStyle}
