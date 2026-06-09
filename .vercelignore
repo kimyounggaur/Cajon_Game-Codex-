@@ -1,11 +1,10 @@
-node_modules/
-dist/
+01 Source/
 artifacts/
+dist/
+docs/
+node_modules/
 *.log
 *.tsbuildinfo
 .vite/
 .env
 .env.*
-!.env.example
-
-.vercel
